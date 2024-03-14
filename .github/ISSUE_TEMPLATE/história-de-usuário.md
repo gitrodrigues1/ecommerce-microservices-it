@@ -12,7 +12,7 @@ assignees: ''
 **Porquê:**
 
 ### Critérios de Aceitação:
-[ ] - Descreva seu critério aqui
+[ ] - Descreva seus critérios aqui
 
 ### Requsitos:
-1. Descreva seu requisito aqui
+1. Descreva seus requisitos aqui

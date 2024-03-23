@@ -1,5 +1,8 @@
 package br.com.it.users.infrastructure.repositories;
 
-public interface UserRepository {
+import br.com.it.users.domain.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
     
 }

@@ -1,7 +1,6 @@
 package br.com.it.users.presentation;
 
 import br.com.it.users.application.service.IUserService;
-import br.com.it.users.domain.dto.UpdateUserDto;
 import br.com.it.users.domain.dto.UserDto;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

@@ -4,11 +4,11 @@ Projeto de desenvolvimento de e-commerce
 
 ### Stack utilizada
 
-☕ Java
-🍃 Spring Boot
- Swagger
-🐘 Postgres
-Github Actions
+- ☕ Java
+- 🍃 Spring Boot
+- Swagger
+- 🐘 Postgres
+- Github Actions
 
 ### Como iniciar no projeto ?
 

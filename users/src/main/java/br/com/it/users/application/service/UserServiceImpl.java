@@ -29,4 +29,12 @@ public class UserServiceImpl implements IUserService{
     public List<UserDto> findAll() {
         return userRepository.findAll().stream().map(UserDto::new).toList();
     }
+
+    public UserDto update(Long id, UserDto userDto) {
+        if(!userRepository.existsById(id)) {
+            throw new IllegalArgumentException("User ID not found.");
+        }
+        var user = userRepository.save(userDto.toModel());
+        return new UserDto(user);
+    }
 }

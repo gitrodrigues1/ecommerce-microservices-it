@@ -12,4 +12,6 @@ public interface IUserService {
     UserDto findById(Long id);
 
     List<UserDto> findAll();
+
+    UserDto update(Long id, UserDto userDto);
 }

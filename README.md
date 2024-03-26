@@ -35,3 +35,5 @@ git clone https://github.com/gitrodrigues1/ecommerce-microservices-it.git
 #### 2.2 - (Opção 2) Abrir o projeto diretamente pelo Intellij
 
 - Ao abrir o Intellij, clique em "Get from Vcs" e informe o caminho do projeto `https://github.com/gitrodrigues1/ecommerce-microservices-it.git`
+
+

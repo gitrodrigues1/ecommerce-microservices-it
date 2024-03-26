@@ -1,5 +1,6 @@
 package br.com.it.users.presentation;
 
+import java.util.List;
 import br.com.it.users.application.service.IUserService;
 import br.com.it.users.domain.dto.UserDto;
 import jakarta.validation.Valid;
@@ -26,5 +27,11 @@ public class UserController {
     public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable Long id) {
         var userUpdated = userService.update(id, userDto);
         return ResponseEntity.ok().body(userUpdated);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UserDto>> findAll() {
+        var users = userService.findAll();
+        return ResponseEntity.ok().body((users));
     }
 }

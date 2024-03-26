@@ -5,6 +5,8 @@ import br.com.it.users.domain.model.User;
 import br.com.it.users.infrastructure.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements IUserService{
 
@@ -24,5 +26,11 @@ public class UserServiceImpl implements IUserService{
         }
         var user = userRepository.save(userDto.toModel());
         return new UserDto(user);
+    }
+
+    @Override
+    public List<UserDto> findAll() {
+        var users =  userRepository.findAll();
+        return users.stream().map(UserDto::new).toList();
     }
 }

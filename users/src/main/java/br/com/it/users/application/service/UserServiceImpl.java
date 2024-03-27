@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements IUserService{
+public class    UserServiceImpl implements IUserService{
 
     private UserRepository userRepository;
 
@@ -33,4 +33,15 @@ public class UserServiceImpl implements IUserService{
         var users =  userRepository.findAll();
         return users.stream().map(UserDto::new).toList();
     }
+
+    @Override
+    public void deleteById(Long id) {
+        if(!userRepository.existsById(id)) {
+            throw new IllegalArgumentException("User ID not found.");
+        }
+
+        userRepository.deleteById(id);
+
+    }
+
 }

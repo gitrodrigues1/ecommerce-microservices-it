@@ -24,7 +24,9 @@ public class    UserServiceImpl implements IUserService{
         if(!userRepository.existsById(id)) {
             throw new IllegalArgumentException("User ID not found.");
         }
-        var user = userRepository.save(userDto.toModel());
+        var user = userDto.toModel();
+        user.setId(id);
+        userRepository.save(user);
         return new UserDto(user);
     }
 

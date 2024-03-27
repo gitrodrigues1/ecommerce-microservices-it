@@ -1,9 +1,12 @@
 package br.com.it.users.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.it.users.domain.model.User;
 
 public class UserDto {
     
+    @JsonIgnore
     private Long id;
     private String name;
     private String email;

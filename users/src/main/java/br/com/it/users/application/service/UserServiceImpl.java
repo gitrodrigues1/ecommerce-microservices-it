@@ -39,9 +39,7 @@ public class    UserServiceImpl implements IUserService{
         if(!userRepository.existsById(id)) {
             throw new IllegalArgumentException("User ID not found.");
         }
-
         userRepository.deleteById(id);
-
     }
 
 }

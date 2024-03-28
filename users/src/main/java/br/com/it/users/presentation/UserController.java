@@ -1,11 +1,16 @@
 package br.com.it.users.presentation;
 
+import java.net.URI;
 import java.util.List;
 import br.com.it.users.application.service.IUserService;
+import br.com.it.users.domain.dto.CreateUserDto;
+import br.com.it.users.domain.dto.GetUserDto;
 import br.com.it.users.domain.dto.UserDto;
 import jakarta.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/users")
@@ -18,9 +23,13 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
-        var createdUser = userService.create(userDto);
-        return ResponseEntity.ok().body(new UserDto(createdUser));
+    public ResponseEntity<GetUserDto> createUser(@Valid @RequestBody CreateUserDto dto) {
+        var createdUser = userService.create(dto).get();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(createdUser.id())
+            .toUri();
+        return ResponseEntity.created(uri).body(createdUser);
     }
 
     @PutMapping("/{id}")
@@ -36,8 +45,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
-        var user = userService.findUserById(id);
+    public ResponseEntity<GetUserDto> findById(@PathVariable Long id) {
+        var user = userService.findUserById(id).get();
         return ResponseEntity.ok().body(user);
     }
 

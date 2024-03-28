@@ -1,18 +1,21 @@
 package br.com.it.users.application.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import br.com.it.users.domain.dto.CreateUserDto;
+import br.com.it.users.domain.dto.GetUserDto;
 import br.com.it.users.domain.dto.UserDto;
-import br.com.it.users.domain.model.User;
 
 public interface IUserService {
 
-    User create(UserDto userDto);
+    Optional<GetUserDto> create(CreateUserDto userDto);
 
     UserDto update(Long id, UserDto userDto);
 
     List<UserDto> findAll();
 
-    UserDto findUserById(Long id);
+    Optional<GetUserDto> findUserById(Long id);
 
     void deleteById(Long id);
 }

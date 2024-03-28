@@ -3,16 +3,24 @@ package br.com.it.users.domain.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.it.users.domain.model.User;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
     
     @JsonIgnore
     private Long id;
+
+    @NotNull
     private String name;
+
+    @NotNull
+    @Email
     private String email;
     
     public UserDto() {
     }
+    
     public UserDto(User user) {
         this.id = user.getId();
         this.name = user.getName();

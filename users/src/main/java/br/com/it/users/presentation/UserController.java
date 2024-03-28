@@ -18,7 +18,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
         var createdUser = userService.create(userDto);
         return ResponseEntity.ok().body(new UserDto(createdUser));
     }
@@ -34,4 +34,5 @@ public class UserController {
         var users = userService.findAll();
         return ResponseEntity.ok().body((users));
     }
+
 }

@@ -6,10 +6,9 @@ import br.com.it.users.infrastructure.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements IUserService{
+public class    UserServiceImpl implements IUserService{
 
     private UserRepository userRepository;
 
@@ -43,13 +42,6 @@ public class UserServiceImpl implements IUserService{
             throw new IllegalArgumentException("User ID not found.");
         }
         userRepository.deleteById(id);
-    }
-
-    @Override
-    public UserDto findUserById(Long id) {
-        var user = userRepository.findById(id).orElseThrow(IllegalArgumentException::new);
-        var userDto = new UserDto(user);
-        return userDto;
     }
 
 }

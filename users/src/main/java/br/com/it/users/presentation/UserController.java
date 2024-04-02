@@ -19,19 +19,19 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
-        var createdUser = userService.create(userDto);
-        return ResponseEntity.ok().body(new UserDto(createdUser));
+        UserDto createdUser = userService.create(userDto);
+        return ResponseEntity.ok().body(createdUser);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable Long id) {
-        var userUpdated = userService.update(id, userDto);
+        UserDto userUpdated = userService.update(id, userDto);
         return ResponseEntity.ok().body(userUpdated);
     }
 
     @GetMapping
     public ResponseEntity<List<UserDto>> findAll() {
-        var users = userService.findAll();
+        List<UserDto> users = userService.findAll();
         return ResponseEntity.ok().body((users));
     }
 

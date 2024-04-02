@@ -16,15 +16,16 @@ public class    UserServiceImpl implements IUserService{
         this.userRepository = userRepository;
     }
 
-    public User create(UserDto userDto) {
-        return userRepository.save(userDto.toModel());
+    public UserDto create(UserDto userDto) {
+        User user = userRepository.save(userDto.toModel());
+        return new UserDto(user);
     }
 
     public UserDto update(Long id, UserDto userDto) {
         if(!userRepository.existsById(id)) {
             throw new IllegalArgumentException("User ID not found.");
         }
-        var user = userDto.toModel();
+        User user = userDto.toModel();
         user.setId(id);
         userRepository.save(user);
         return new UserDto(user);
@@ -32,7 +33,7 @@ public class    UserServiceImpl implements IUserService{
 
     @Override
     public List<UserDto> findAll() {
-        var users =  userRepository.findAll();
+        List<User> users =  userRepository.findAll();
         return users.stream().map(UserDto::new).toList();
     }
 

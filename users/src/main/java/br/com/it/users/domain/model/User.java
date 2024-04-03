@@ -18,8 +18,8 @@ public class User {
 
     private String name;
     private String email;
-    private LocalDate dataNascimento;
-    private String senha;
+    private LocalDate birthDate;
+    private String password;
     private UserEnum userEnum;
 
     public User() {
@@ -29,8 +29,8 @@ public class User {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.dataNascimento = dataNascimento;
-        this.senha = senha;
+        this.birthDate = dataNascimento;
+        this.password = senha;
 
     }
 
@@ -57,16 +57,16 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getSenha() { return senha; }
+    public String getPassword() { return password; }
 
-    public void setSenha(String senha) { this.senha = senha; }
+    public void setPassword(String senha) { this.password = senha; }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setBirthDate(LocalDate dataNascimento) {
+        this.birthDate = dataNascimento;
     }
 
     public UserEnum getUserEnum() {

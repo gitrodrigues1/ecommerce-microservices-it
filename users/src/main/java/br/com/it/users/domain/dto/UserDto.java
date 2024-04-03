@@ -24,13 +24,13 @@ public class UserDto {
     private String email;
 
     @NotNull
-    private LocalDate dataNascimento;
+    private LocalDate birthDate;
 
     @NotNull
     private UserEnum userEnum;
 
     @NotBlank
-    private String senha;
+    private String password;
 
     public UserDto() {
     }
@@ -39,14 +39,14 @@ public class UserDto {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
-        this.senha = user.getSenha();
+        this.password = user.getPassword();
     }
-    public UserDto(String name, String email, LocalDate dataNascimento, String senha, UserEnum userEnum) {
+    public UserDto(String name, String email, LocalDate dataNascimento, String password, UserEnum userEnum) {
         this.name = name;
         this.email = email;
-        this.senha = senha;
+        this.password = password;
         this.userEnum = userEnum;
-        this.dataNascimento = dataNascimento;
+        this.birthDate = dataNascimento;
     }
 
     public String getName() {
@@ -62,20 +62,20 @@ public class UserDto {
         this.email = email;
     }
 
-    public LocalDate getDataNascimento() { return dataNascimento; }
+    public LocalDate getBirthDate() { return birthDate; }
 
-    public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
+    public void setBirthDate(LocalDate dataNascimento) { this.birthDate = dataNascimento; }
 
-    public String getSenha() { return senha; }
+    public String getPassword() { return password; }
 
-    public void setSenha(String senha) { this.senha = senha; }
+    public void setPassword(String password) { this.password = password; }
 
     public User toModel() {
         var user = new User();
         user.setName(this.name);
         user.setEmail(this.email);
-        user.setSenha(this.senha);
-        user.setDataNascimento(dataNascimento);
+        user.setPassword(this.password);
+        user.setBirthDate(birthDate);
         user.setUserEnum(userEnum);
 
         return user;

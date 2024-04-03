@@ -1,0 +1,93 @@
+package br.com.it.users.application.dto;
+
+import br.com.it.users.domain.model.User;
+import br.com.it.users.domain.model.UserEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.Email;
+
+import java.time.LocalDate;
+
+public class UpdateUserDto {
+
+    @JsonIgnore
+    private Long id;
+
+
+    private String name;
+
+
+    @Email
+    private String email;
+
+
+    private LocalDate dataNascimento;
+
+
+    private UserEnum userEnum;
+
+
+    private String senha;
+
+    public UpdateUserDto() {
+    }
+
+    public UpdateUserDto(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.senha = user.getSenha();
+    }
+    public UpdateUserDto(String name, String email, LocalDate dataNascimento, String senha, UserEnum userEnum) {
+        this.name = name;
+        this.email = email;
+        this.senha = senha;
+        this.userEnum = userEnum;
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDate getDataNascimento() { return dataNascimento; }
+
+    public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
+
+    public String getSenha() { return senha; }
+
+    public void setSenha(String senha) { this.senha = senha; }
+
+    public User toModel() {
+        var user = new User();
+        user.setName(this.name);
+        user.setEmail(this.email);
+        user.setSenha(this.senha);
+        user.setDataNascimento(dataNascimento);
+        user.setUserEnum(userEnum);
+
+        return user;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public UserEnum getUserEnum() {
+        return userEnum;
+    }
+
+    public void setUserEnum(UserEnum userEnum) {
+        this.userEnum = userEnum;
+    }
+}

@@ -1,5 +1,6 @@
 package br.com.it.users.application.service;
 
+import br.com.it.users.application.dto.UpdateUserDto;
 import br.com.it.users.domain.dto.UserDto;
 import br.com.it.users.domain.exceptions.NotFoundException;
 import br.com.it.users.domain.model.User;
@@ -22,12 +23,17 @@ public class UserServiceImpl implements IUserService{
         return new UserDto(user);
     }
 
-    public UserDto update(Long id, UserDto userDto) {
-        if(!userRepository.existsById(id)) {
-            throw new IllegalArgumentException("User ID not found.");
+    public UserDto update(Long id, UpdateUserDto userDto) {
+        User user = userRepository.findById(id).orElseThrow(NotFoundException::new);
+        if (userDto.getName() != null) {
+            user.setName(userDto.getName());
         }
-        User user = userDto.toModel();
-        user.setId(id);
+        if (userDto.getEmail() != null) {
+            user.setEmail(userDto.getEmail());
+        }
+        if (userDto.getDataNascimento() != null) {
+            user.setDataNascimento(userDto.getDataNascimento());
+        }
         userRepository.save(user);
         return new UserDto(user);
     }

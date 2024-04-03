@@ -3,6 +3,7 @@ package br.com.it.users.presentation;
 import java.net.URI;
 import java.util.List;
 
+import br.com.it.users.application.dto.CreateUserDto;
 import br.com.it.users.application.dto.UpdateUserDto;
 import br.com.it.users.application.dto.UserDto;
 import br.com.it.users.application.service.IUserService;
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody CreateUserDto userDto) {
         UserDto createdUser = userService.create(userDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/{id}")

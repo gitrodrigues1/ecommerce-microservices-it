@@ -1,5 +1,6 @@
 package br.com.it.users.application.service;
 
+import br.com.it.users.application.dto.CreateUserDto;
 import br.com.it.users.application.dto.UpdateUserDto;
 import br.com.it.users.application.dto.UserDto;
 import br.com.it.users.domain.exceptions.NotFoundException;
@@ -18,7 +19,7 @@ public class UserServiceImpl implements IUserService{
         this.userRepository = userRepository;
     }
 
-    public UserDto create(UserDto userDto) {
+    public UserDto create(CreateUserDto userDto) {
         User user = userRepository.save(userDto.toModel());
         return new UserDto(user);
     }

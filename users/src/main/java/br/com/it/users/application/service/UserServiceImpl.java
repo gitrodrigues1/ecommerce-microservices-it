@@ -31,8 +31,8 @@ public class UserServiceImpl implements IUserService{
         if (userDto.getEmail() != null) {
             user.setEmail(userDto.getEmail());
         }
-        if (userDto.getDataNascimento() != null) {
-            user.setDataNascimento(userDto.getDataNascimento());
+        if (userDto.getBirthDate() != null) {
+            user.setBirthDate(userDto.getBirthDate());
         }
         userRepository.save(user);
         return new UserDto(user);

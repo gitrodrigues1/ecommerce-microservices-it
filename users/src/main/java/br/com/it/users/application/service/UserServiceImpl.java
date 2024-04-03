@@ -7,6 +7,7 @@ import br.com.it.users.infrastructure.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -23,11 +24,16 @@ public class UserServiceImpl implements IUserService{
     }
 
     public UserDto update(Long id, UserDto userDto) {
-        if(!userRepository.existsById(id)) {
-            throw new IllegalArgumentException("User ID not found.");
+        User user = userRepository.findById(id).orElseThrow(NotFoundException::new);
+        if (!userDto.getName().isBlank()) {
+            user.setName(userDto.getName());
         }
-        User user = userDto.toModel();
-        user.setId(id);
+        if (!userDto.getEmail().isBlank()) {
+            user.setEmail(userDto.getEmail());
+        }
+        if (userDto.getDataNascimento() != null) {
+            user.setDataNascimento(userDto.getDataNascimento());
+        }
         userRepository.save(user);
         return new UserDto(user);
     }

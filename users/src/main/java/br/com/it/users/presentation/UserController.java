@@ -4,8 +4,8 @@ import java.net.URI;
 import java.util.List;
 
 import br.com.it.users.application.dto.UpdateUserDto;
+import br.com.it.users.application.dto.UserDto;
 import br.com.it.users.application.service.IUserService;
-import br.com.it.users.domain.dto.UserDto;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

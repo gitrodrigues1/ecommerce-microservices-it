@@ -1,4 +1,4 @@
-package br.com.it.users.domain.dto;
+package br.com.it.users.application.dto;
 
 import br.com.it.users.domain.model.UserEnum;
 

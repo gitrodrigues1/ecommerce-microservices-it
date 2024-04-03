@@ -1,6 +1,7 @@
 package br.com.it.users.application.service;
 
 import br.com.it.users.domain.dto.UserDto;
+import br.com.it.users.domain.exceptions.NotFoundException;
 import br.com.it.users.domain.model.User;
 import br.com.it.users.infrastructure.repositories.UserRepository;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class    UserServiceImpl implements IUserService{
+public class UserServiceImpl implements IUserService{
 
     private UserRepository userRepository;
 
@@ -31,13 +32,16 @@ public class    UserServiceImpl implements IUserService{
         return new UserDto(user);
     }
 
-    @Override
     public List<UserDto> findAll() {
         List<User> users =  userRepository.findAll();
         return users.stream().map(UserDto::new).toList();
     }
 
-    @Override
+    public UserDto findById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(NotFoundException::new);
+        return new UserDto(user);
+    }
+
     public void deleteById(Long id) {
         if(!userRepository.existsById(id)) {
             throw new IllegalArgumentException("User ID not found.");

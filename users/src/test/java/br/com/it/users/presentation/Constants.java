@@ -2,7 +2,7 @@ package br.com.it.users.presentation;
 
 import java.time.LocalDate;
 
-import br.com.it.users.domain.dto.UserDto;
+import br.com.it.users.application.dto.UserDto;
 import br.com.it.users.domain.model.UserEnum;
 
 public class Constants {

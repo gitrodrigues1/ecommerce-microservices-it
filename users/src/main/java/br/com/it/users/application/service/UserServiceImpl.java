@@ -1,7 +1,7 @@
 package br.com.it.users.application.service;
 
 import br.com.it.users.application.dto.UpdateUserDto;
-import br.com.it.users.domain.dto.UserDto;
+import br.com.it.users.application.dto.UserDto;
 import br.com.it.users.domain.exceptions.NotFoundException;
 import br.com.it.users.domain.model.User;
 import br.com.it.users.infrastructure.repositories.UserRepository;

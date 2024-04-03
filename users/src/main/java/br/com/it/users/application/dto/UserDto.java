@@ -13,7 +13,6 @@ import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
     
-    @JsonIgnore
     private Long id;
 
     @NotBlank
@@ -29,7 +28,7 @@ public class UserDto {
     @NotNull
     private UserEnum userEnum;
 
-    @NotBlank
+    @JsonIgnore
     private String password;
 
     public UserDto() {
@@ -39,7 +38,8 @@ public class UserDto {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
-        this.password = user.getPassword();
+        this.birthDate = user.getBirthDate();
+        this.userEnum = user.getUserEnum();
     }
     public UserDto(String name, String email, LocalDate dataNascimento, String password, UserEnum userEnum) {
         this.name = name;
@@ -75,8 +75,8 @@ public class UserDto {
         user.setName(this.name);
         user.setEmail(this.email);
         user.setPassword(this.password);
-        user.setBirthDate(birthDate);
-        user.setUserEnum(userEnum);
+        user.setBirthDate(this.birthDate);
+        user.setUserEnum(this.userEnum);
 
         return user;
     }

@@ -2,6 +2,8 @@ package br.com.it.users.presentation;
 
 import java.net.URI;
 import java.util.List;
+
+import br.com.it.users.application.dto.UpdateUserDto;
 import br.com.it.users.application.service.IUserService;
 import br.com.it.users.domain.dto.UserDto;
 import jakarta.validation.Valid;
@@ -31,7 +33,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable Long id) {
+    public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UpdateUserDto userDto, @PathVariable Long id) {
         UserDto userUpdated = userService.update(id, userDto);
         return ResponseEntity.ok().body(userUpdated);
     }

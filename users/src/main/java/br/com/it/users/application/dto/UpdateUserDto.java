@@ -1,47 +1,43 @@
-package br.com.it.users.domain.dto;
+package br.com.it.users.application.dto;
 
+import br.com.it.users.domain.model.User;
 import br.com.it.users.domain.model.UserEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.Email;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+public class UpdateUserDto {
 
-import br.com.it.users.domain.model.User;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
-public class UserDto {
-    
     @JsonIgnore
     private Long id;
 
-    @NotBlank
+
     private String name;
 
 
     @Email
     private String email;
 
-    @NotNull
+
     private LocalDate dataNascimento;
 
-    @NotNull
+
     private UserEnum userEnum;
 
-    @NotBlank
+
     private String senha;
 
-    public UserDto() {
+    public UpdateUserDto() {
     }
-    
-    public UserDto(User user) {
+
+    public UpdateUserDto(User user) {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
         this.senha = user.getSenha();
     }
-    public UserDto(String name, String email, LocalDate dataNascimento, String senha, UserEnum userEnum) {
+    public UpdateUserDto(String name, String email, LocalDate dataNascimento, String senha, UserEnum userEnum) {
         this.name = name;
         this.email = email;
         this.senha = senha;

@@ -1,5 +1,6 @@
 package br.com.it.users.application.service;
 
+import br.com.it.users.application.dto.UpdateUserDto;
 import br.com.it.users.domain.dto.UserDto;
 import br.com.it.users.domain.exceptions.NotFoundException;
 import br.com.it.users.domain.model.User;
@@ -7,7 +8,6 @@ import br.com.it.users.infrastructure.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -23,12 +23,12 @@ public class UserServiceImpl implements IUserService{
         return new UserDto(user);
     }
 
-    public UserDto update(Long id, UserDto userDto) {
+    public UserDto update(Long id, UpdateUserDto userDto) {
         User user = userRepository.findById(id).orElseThrow(NotFoundException::new);
-        if (!userDto.getName().isBlank()) {
+        if (userDto.getName() != null) {
             user.setName(userDto.getName());
         }
-        if (!userDto.getEmail().isBlank()) {
+        if (userDto.getEmail() != null) {
             user.setEmail(userDto.getEmail());
         }
         if (userDto.getDataNascimento() != null) {

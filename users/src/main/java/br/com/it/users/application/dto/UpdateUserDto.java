@@ -20,13 +20,13 @@ public class UpdateUserDto {
     private String email;
 
 
-    private LocalDate dataNascimento;
+    private LocalDate birthDate;
 
 
     private UserEnum userEnum;
 
 
-    private String senha;
+    private String password;
 
     public UpdateUserDto() {
     }
@@ -35,14 +35,14 @@ public class UpdateUserDto {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
-        this.senha = user.getSenha();
+        this.password = user.getPassword();
     }
     public UpdateUserDto(String name, String email, LocalDate dataNascimento, String senha, UserEnum userEnum) {
         this.name = name;
         this.email = email;
-        this.senha = senha;
+        this.password = senha;
         this.userEnum = userEnum;
-        this.dataNascimento = dataNascimento;
+        this.birthDate = dataNascimento;
     }
 
     public String getName() {
@@ -58,20 +58,20 @@ public class UpdateUserDto {
         this.email = email;
     }
 
-    public LocalDate getDataNascimento() { return dataNascimento; }
+    public LocalDate getBirthDate() { return birthDate; }
 
-    public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
+    public void setBirthDate(LocalDate dataNascimento) { this.birthDate = dataNascimento; }
 
-    public String getSenha() { return senha; }
+    public String getPassword() { return password; }
 
-    public void setSenha(String senha) { this.senha = senha; }
+    public void setPassword(String senha) { this.password = senha; }
 
     public User toModel() {
         var user = new User();
         user.setName(this.name);
         user.setEmail(this.email);
-        user.setSenha(this.senha);
-        user.setDataNascimento(dataNascimento);
+        user.setPassword(this.password);
+        user.setBirthDate(birthDate);
         user.setUserEnum(userEnum);
 
         return user;

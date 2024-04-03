@@ -2,12 +2,13 @@ package br.com.it.users.application.service;
 
 import java.util.List;
 
+import br.com.it.users.application.dto.CreateUserDto;
 import br.com.it.users.application.dto.UpdateUserDto;
 import br.com.it.users.application.dto.UserDto;
 
 public interface IUserService {
 
-    UserDto create(UserDto userDto);
+    UserDto create(CreateUserDto userDto);
 
     UserDto update(Long id, UpdateUserDto userDto);
 

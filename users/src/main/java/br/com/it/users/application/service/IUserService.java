@@ -11,5 +11,7 @@ public interface IUserService {
 
     List<UserDto> findAll();
 
+    UserDto findById(Long id);
+
     void deleteById(Long id);
 }

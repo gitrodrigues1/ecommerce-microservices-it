@@ -1,11 +1,13 @@
 package br.com.it.users.presentation;
 
+import java.net.URI;
 import java.util.List;
 import br.com.it.users.application.service.IUserService;
 import br.com.it.users.domain.dto.UserDto;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/users")
@@ -20,7 +22,12 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
         UserDto createdUser = userService.create(userDto);
-        return ResponseEntity.ok().body(createdUser);
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/{id}")
+                .buildAndExpand(createdUser.getId())
+                .toUri();
+
+        return ResponseEntity.created(uri).body(createdUser);
     }
 
     @PutMapping("/{id}")
@@ -33,6 +40,12 @@ public class UserController {
     public ResponseEntity<List<UserDto>> findAll() {
         List<UserDto> users = userService.findAll();
         return ResponseEntity.ok().body((users));
+    }
+
+    @GetMapping("/{id}")
+    public UserDto findById(@PathVariable Long id) {
+        return userService.findById(id);
+
     }
 
     @DeleteMapping("/{id}")

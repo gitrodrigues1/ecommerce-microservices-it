@@ -1,33 +1,35 @@
 package br.com.it.users.domain.dto;
 
 import br.com.it.users.domain.model.UserEnum;
+
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.it.users.domain.model.User;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
-import java.util.Locale;
 
 public class UserDto {
     
     @JsonIgnore
     private Long id;
 
-    @NotNull
+    @NotBlank
     private String name;
 
-    @NotNull
+    @NotBlank
     @Email
     private String email;
 
     @NotNull
-    private String dataNascimento;
+    private LocalDate dataNascimento;
 
     @NotNull
     private UserEnum userEnum;
 
-    @NotNull
+    @NotBlank
     private String senha;
 
     public UserDto() {
@@ -39,7 +41,7 @@ public class UserDto {
         this.email = user.getEmail();
         this.senha = user.getSenha();
     }
-    public UserDto(String name, String email, String dataNascimento, String senha, UserEnum userEnum) {
+    public UserDto(String name, String email, LocalDate dataNascimento, String senha, UserEnum userEnum) {
         this.name = name;
         this.email = email;
         this.senha = senha;
@@ -60,9 +62,9 @@ public class UserDto {
         this.email = email;
     }
 
-    public String getDataNascimento() { return dataNascimento; }
+    public LocalDate getDataNascimento() { return dataNascimento; }
 
-    public void setDataNascimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
+    public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
 
     public String getSenha() { return senha; }
 
@@ -73,6 +75,8 @@ public class UserDto {
         user.setName(this.name);
         user.setEmail(this.email);
         user.setSenha(this.senha);
+        user.setDataNascimento(dataNascimento);
+        user.setUserEnum(userEnum);
 
         return user;
     }

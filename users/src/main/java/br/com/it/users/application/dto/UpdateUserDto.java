@@ -3,28 +3,29 @@ package br.com.it.users.application.dto;
 import br.com.it.users.domain.model.User;
 import br.com.it.users.domain.model.UserEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.Email;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.Email;
 import java.time.LocalDate;
+
 
 public class UpdateUserDto {
 
     @JsonIgnore
     private Long id;
 
-
+    @Column(nullable = true)
     private String name;
 
-
     @Email
+    @Column(nullable = true)
     private String email;
 
-
+    @Column(nullable = true)
     private LocalDate birthDate;
-
-
+    
     private UserEnum userEnum;
-
 
     private String password;
 

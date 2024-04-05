@@ -27,5 +27,21 @@ public class UserControllerTest {
         assertThat(createdUser.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         
     }
+
+    @Test()
+    void createUserWithInvalidDataShouldReturnException() {
+        String message = "Error while extracting response for type [class br.com.it.users.application.dto.UserDto] and content type [application/json]";
+        String messageFromException = "";
+
+        try {
+            UserDto user = Constants.USER_WITHOUT_NAME;
+            restTemplate.postForEntity("/users", user, UserDto.class);
+        }
+        catch (Exception e) {
+            messageFromException = e.getMessage();
+        }
+        assertThat(messageFromException).isEqualTo(message);
+
+    }
     
 }

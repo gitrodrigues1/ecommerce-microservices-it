@@ -9,6 +9,7 @@ import br.com.it.users.domain.model.UserEnum;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class CreateUserDto {
     
@@ -19,6 +20,7 @@ public class CreateUserDto {
     private String email;
 
     @DateTimeFormat(style = "YYYY-mm-dd")
+    @NotNull
     private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)

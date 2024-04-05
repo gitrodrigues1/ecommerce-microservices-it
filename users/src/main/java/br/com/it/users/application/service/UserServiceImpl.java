@@ -26,10 +26,10 @@ public class UserServiceImpl implements IUserService{
 
     public UserDto update(Long id, UpdateUserDto userDto) {
         User user = userRepository.findById(id).orElseThrow(NotFoundException::new);
-        if (userDto.getName() != null) {
+        if (userDto.getName() != null && !userDto.getName().trim().isEmpty()) {
             user.setName(userDto.getName());
         }
-        if (userDto.getEmail() != null) {
+        if (userDto.getEmail() != null && !userDto.getEmail().trim().isEmpty()) {
             user.setEmail(userDto.getEmail());
         }
         if (userDto.getBirthDate() != null) {
